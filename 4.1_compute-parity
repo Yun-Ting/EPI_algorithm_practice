@@ -1,0 +1,12 @@
+// 4.1_compute-parity
+
+// Time Complexity: O(4)
+// Space Complexity: O(n/L )
+short Parity(unsigned long x) {
+	const int kMaskSize = 16;
+	const int kBitMask = 0xffff;
+	return precomputed[x >> (3 * kMaskSize)] ^ 
+			precomputed[(x >> (2 * kMaskSize)) & kBitMask] ^
+			precomputed[(x >> kMaskSize) & kBitMask ] ^
+			precomputed[x & kBitMask];
+}
