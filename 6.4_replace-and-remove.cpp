@@ -18,7 +18,6 @@ int ReplaceAndRemove(int size, char s[]) { // char s[] means it's a character ar
 			++a_count;
 		}
 	}
-
 	// backward iteration: 
 	// replace 'a's with 'd's starting from the end
 	int cur_idx = write_idx - 1; // the cur_idx is for logok up
