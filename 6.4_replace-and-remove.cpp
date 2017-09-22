@@ -21,7 +21,7 @@ int ReplaceAndRemove(int size, char s[]) { // char s[] means it's a character ar
 
 	// backward iteration: 
 	// replace 'a's with 'd's starting from the end
-	int cur_idx = write_idx - 1; // the cur_idx is for look up
+	int cur_idx = write_idx - 1; // the cur_idx is for logok up
 	write_idx = write_idx + a_count - 1; // write_idx is for writing
 	const int final_size = write_idx + 1; // because write_idx will change as
 										  // we starts writing,
