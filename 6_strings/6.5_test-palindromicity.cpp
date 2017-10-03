@@ -1,5 +1,6 @@
 // 6.5_test-palindromicity
-// 9/22 the concepts of looping still needs to be improved!
+// 9.22 the concepts of looping still needs to be improved!
+// 9.25 submitted it at leetcode 125
 
 #include <iostream>
 #include <string>
@@ -19,7 +20,7 @@ bool IsPanlindrome(const string &s) {
 		while (!isalpha(s[j]) && i < j) {
 			--j;
 		}
-		if (tolower(s[i++]) != towlower(s[j--])) 
+		if (tolower(s[i++]) != tolower(s[j--])) 
 			return false;
 	}
 	return true;

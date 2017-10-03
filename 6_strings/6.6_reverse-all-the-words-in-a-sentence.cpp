@@ -1,5 +1,9 @@
 // 6.6_reverse-all-the-words-in-a-sentence.cpp
 // 9.20 the power of std!!!!!
+// 9.25 cannot pass LeetCode 151 QAQ
+// 9.27 Finally passed LeetCode, you can see the code at the bottom
+// 		super annoying test cases!!!!
+
 #include <iostream>
 #include <string>
 #include <cassert>
@@ -45,6 +49,48 @@ int main() {
 	}
 	cout << endl;
 }
+
+////////////////////////////////////////////
+
+class Solution {
+public:
+    void reverseWords(string &s) {
+        // Step1:
+        // remove leading and trailing zeroes
+        const auto strBegin = s.find_first_not_of(" ");
+        if (strBegin == string::npos) {
+            s = ""; // no non-whitespace found
+            return;
+        }
+        const auto strEnd = s.find_last_not_of(" ");
+        const auto strRange = strEnd - strBegin + 1;
+        s = s.substr(strBegin, strRange);
+        
+        // Step2:
+        // remove extra spaces
+        auto beginSpace = s.find_first_of(" ");
+        while (beginSpace != string::npos) { // while contains extra spaces to be removed        
+            const auto endSpace = s.find_first_not_of(" ", beginSpace);
+            const auto range = endSpace - beginSpace;
+            s.replace(beginSpace, range, " ");
+            const auto newStart = beginSpace + 1;
+            beginSpace = s.find_first_of(" ", newStart);
+        }
+        // Step3:       
+        // reverse words in-place
+        reverse(s.begin(), s.end());
+        int start = 0;
+        int end = 0;
+        while ((end = s.find(" ", start)) != string::npos) { //while there's " " in the position we're interested in
+            reverse(s.begin() + start, s.begin() + end);
+            start = end + 1;
+        }
+        // !!!remember to reverse the last word
+        reverse(s.begin() + start, s.end());
+    }
+};
+
+
 
 
 // Find content in string

@@ -3,6 +3,10 @@
 // The execution path is very similar to that of the brute-force
 // approach, but the compiler handles looping
 
+// 9.22 hard to understand =口="
+// 9.25 submitted it at Leetcode 17, compile error cannot fix QAQ
+// Imagine you are really playing with a combination lock in your hand!
+
 #include <iostream>
 #include <string>
 #include <cassert>
@@ -11,8 +15,8 @@
 #include <map>
 using namespace std;
 
-// Time comp: O( (4^n) * n)
 
+// Time comp: O( (4^n) * n)
 vector<string> PhoneMnemonics(const string& phone_number) {
 	string partial_mnemonic(phone_number.size(), 0);
 	vector<string> mnemonics;
@@ -21,9 +25,9 @@ vector<string> PhoneMnemonics(const string& phone_number) {
 }
 
 // The mapping from digit to corresponding characters.
+const int kNumTelDigits = 10;
 const array<string, kNumTelDigits> kMapping = 
 								  {"0", "1", "ABC", "DEF", "GHI", "JKL", "MNO", "PQRS", "TUV", "WXYZ"};
-
 
 void PhoneMnemonicsHelper(const string& phone_number, int digit, string* partial_mnemonic, vector<string>* mnemonics) {
 	if (digit == phone_number.size()) {
