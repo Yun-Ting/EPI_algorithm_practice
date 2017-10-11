@@ -1,8 +1,6 @@
 // 7.4_test-for-overlapping-lists.cpp
 
 using namespace std;
-
-
 struct ListNode {
 	int val;
 	ListNode* next;
