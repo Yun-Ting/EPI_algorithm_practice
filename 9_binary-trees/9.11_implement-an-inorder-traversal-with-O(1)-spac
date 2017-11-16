@@ -1,0 +1,31 @@
+// 9.11_implement-an-inorder-traversal-with-O(1)-space.cpp
+vector<int> InorderTraversal(const TreeNode* tree) {
+	TreeNode* prev = nullptr;
+	TreeNode* curr = tree;
+	vector<int> result;
+
+	while (curr != nullptr) {
+		TreeNode* next;
+		if (curr->parent == prev) {
+			// We came DOWN to curr from prev.
+			if (curr->left != nullptr) { // keep going left
+				next = curr->left;
+			} else {
+				result.emplace_back(curr->data);
+				// done with left, so go right if right is not empty.
+				// otherwise, go up.
+				next = (curr->right != nullptr) ? curr->right : curr->parent;
+			}
+		} else if (curr->left == prev) {
+			// we came up to curr from its left child.
+			result.emplace_back(curr->data);
+			// done with left, so go right if right is not empty. Otherwise go up.
+			next = (curr->right != nullptr) ? curr->right : curr->parent;
+		} else { // done with both children, so move up
+			next = curr->parent;
+		}
+		prev = curr;
+		curr = next;
+	}
+	return result;
+}

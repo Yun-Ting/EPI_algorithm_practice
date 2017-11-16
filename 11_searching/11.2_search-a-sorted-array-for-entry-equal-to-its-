@@ -1,0 +1,20 @@
+// 11.2_search-a-sorted-array-for-entry-equal-to-its-index.cpp
+// Time: O(logn)
+
+int SearchEntryEqualToItsIndex(const vector<int>& A) {
+	int left = 0;
+	int right = A.size() - 1;
+	while (left <= right) {
+		int mid = left + ((right - left) / 2);
+		int diff = A[mid] - mid;
+		// A[mid] == mid if and only if difference == 0.
+		if (diff == 0) {
+			return mid;
+		} else if (difference > 0) {
+			right = mid - 1;
+		} else {
+			left = mid + 1;
+		}
+	}
+	return -1;
+}
