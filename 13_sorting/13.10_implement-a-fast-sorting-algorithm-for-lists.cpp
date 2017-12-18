@@ -2,13 +2,13 @@
 
 // sol-1
 struct ListNode {
-	ListNode(int x) : val(x), next(nullptr){};
+	ListNode(int x) : data(x), next(nullptr){};
 	
-	int val;
+	int data;
 	ListNode* next;
 };
 
-ListNode* InsertionSort(const ListNode& L) {
+ListNode* InsertionSort(const ListNode* L) {
 	auto dummy_head = ListNode(0);
 	auto iter = L;
 
@@ -64,7 +64,28 @@ ListNode* StableSortList(ListNode* L) {
 
 
 
+ListNode* InsertionSort(ListNode* L) {
+	ListNode dummy = ListNode(0);
+	ListNode* dummy_ptr = &dummy;
+	ListNode* iter = L;
 
+	while (iter && iter->next) {
+		if (iter->data > iter->next->val) {
+			auto target = iter->next;
+			auto pre = dummy_ptr;
+			while (pre->next->data < target->data) {
+				pre = pre->next;
+			}
+			auto tmp = pre->next;
+			pre->next = target;
+			iter->next = target->next;
+			target->next = tmp;
+		} else {
+			iter = iter->next;
+		}
+	}
+	return dummy.next;
+}
 
 
 

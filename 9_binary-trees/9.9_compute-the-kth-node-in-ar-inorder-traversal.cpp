@@ -9,7 +9,7 @@ const TreeNode* FindKthNodeBinaryTree(const TreeNode* tree, int k) {
 		if (left_size + 1 < k) { // kth node must be in right tree of iter
 			k = k - (left_size + 1);
 			iter = iter->right;
-		} else if (left_size == k - 1) { // k-th is iter itself
+		} else if (left_size + 1 == k) { // k-th is iter itself
 			return iter;
 		} else { // kth node must be in left subtree of iter
 			iter = iter->left;

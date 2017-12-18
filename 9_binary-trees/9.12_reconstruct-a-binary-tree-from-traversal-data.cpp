@@ -15,6 +15,8 @@ TreeNode* BinaryTreeFromPreorderInorderHelper(
 	const vector<int>& preorder, size_t preorder_start, size_t preorder_end, 
 	size_t inorder_start, size_t inorder_end, const unordered_map<int, size_t>& node_to_inorder_idx);
 
+
+
 TreeNode* BinaryTreeFromPreorderInorder(const vector<int>& preorder, const vector<int>& inorder) {
 	unordered_map<int, size_t> node_to_inorder_idx;
 	for (size_t i = 0; i < inorder.size(); ++i) {
@@ -23,6 +25,7 @@ TreeNode* BinaryTreeFromPreorderInorder(const vector<int>& preorder, const vecto
 	return BinaryTreeFromPreorderInorderHelper(
 		preorder, 0, preorder.size(), 0, inorder.size(), node_to_inorder_idx);
 }
+
 
 // builds the subtree with preorder[preorder_start, preorder_end - 1] and
 // inorder[inorder_start, inorder_end - 1].
@@ -54,7 +57,7 @@ void TreeTraversal(TreeNode* root) {
 }
 
 int main() {
-	vector<int> inorder = { 6, 2, 1, 5, 8, 3, 4, 9, 7};
+	vector<int> inorder = {6,2,1,5,8,3,4,9,7};
 	vector<int> preorder = {8,2,6,5,1,3,4,7,9};
 	auto cuteTree = BinaryTreeFromPreorderInorder(preorder, inorder);
 

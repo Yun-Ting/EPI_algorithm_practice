@@ -1,5 +1,8 @@
 // 9.14_form-a-linked-list-from-the-leaves-of-a-binary-tree.cpp
 
+
+// we processed the tree from left to right
+
 list<TreeNode*> CreateListOfLeaves(TreeNode* tree) {
 	list<TreeNode*> leaves;
 	if (tree != nullptr) {

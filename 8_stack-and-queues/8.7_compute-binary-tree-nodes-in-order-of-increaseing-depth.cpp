@@ -1,6 +1,6 @@
 // 8.7_compute-binary-tree-nodes-in-order-of-increasing-depth.cpp
 
-vector<vector<int>> BinaryTreeDepthOrder(const binaryTreeNode* tree) {
+vector<vector<int>> BinaryTreeDepthOrder(const BinaryTreeNode* tree) {
 	queue<BinaryTreeNode*> curr_depth_nodes({tree});
 	vector<vector<int>> result;
 

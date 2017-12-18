@@ -14,7 +14,7 @@ TreeNode* LCA(const TreeNode* tree, const TreeNode* node0, const TreeNode* node1
 // how many of {node0, node1} are present in the tree.
 // If both are present in the tree, when ancestor is 
 // assigned to a non-null value, it is the LCA
-Status LCAHelper(const TreeNode* tree const TreeNode* node0, const TreeNode* node1) {
+Status LCAHelper(const TreeNode* tree, const TreeNode* node0, const TreeNode* node1) {
 	if (tree == nullptr) {
 		return {0, nullptr};
 	}
@@ -29,11 +29,7 @@ Status LCAHelper(const TreeNode* tree const TreeNode* node0, const TreeNode* nod
 	}
 	int num_target_nodes = left_result.num_target_nodes + right_result.num_target_nodes +
 							(tree == node0) + (tree == node1);
-	return {num_target_nodes, num_target_nodes == 2? tree : nullptr};
+	return {num_target_nodes, num_target_nodes == 2 ? tree : nullptr};
 }
-
-
-
-
 
 

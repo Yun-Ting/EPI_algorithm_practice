@@ -11,6 +11,7 @@ TreeNode* FindSuccessor(const TreeNode* node) {
 		return iter;
 	}
 
+
 	// find the closet ancestor whose left subtree contains node.
 	while (iter->parent != nullptr && iter->parent->right == iter) {
 		iter = iter->parent;

@@ -1,0 +1,57 @@
+// 14.1_test-if-a-binary-tree-satisfies-the-BST-property.cpp
+
+// T: O(n), S: O(h)
+bool IsBinaryTreeBST(TreeNode* tree) {
+	return AreKeysInRange(tree, numeric_limits<int>::min(), numeric_limits<int>::max());
+}
+
+bool AreKeysInRange(TreeNode* tree, int low_range, int high_range) {
+	if (tree == nullptr) return true;
+	else if (tree->data < low_range || tree->data > high_range) {
+		return true;
+	}
+	else {
+		return AreKeysInRange(tree->left, low_range, tree->data) && AreKeysInRange(tree->right, tree->data, high_range);
+	}
+}
+
+
+//////
+/// T: O(n), S: O(n)
+struct QueueEntry {
+	TreeNode* node;
+	int lower_bound;
+	int upper_bound;
+};
+
+bool IsBinaryTreeBST(TreeNode* tree) {
+	queue<QueueEntry> BFS_q;
+	BFS_q.emplace(QueueEntry{tree, numeric_limits<int>::min(), numeric_limits::max()});
+
+	while (!BFS_q.empty()) {
+		if (BFS_q.front()) {
+			if (BFS_q.front()->data < BFS_q.front().lower_bound || BFS_q.front()->data > BFS_q.front().upper_bound) {
+				return false;
+			}
+
+			BFS_q.emplace(QueueEntry{BFS_q.front()->left, BFS_q.front().lower_bound, BFS_q.front()->data});
+			BFS_q.emplace(QueueEntry{BFS_q.front()->right, BFS_q.front()->data, BFS_q.front().upper_bound});
+		}
+		BFS_q.pop();
+	}
+	return true;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

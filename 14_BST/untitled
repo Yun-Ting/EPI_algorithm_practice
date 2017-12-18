@@ -1,0 +1,12 @@
+template <typename T>
+
+struct BST {
+	T data;
+	BST* left, right;
+
+};
+
+BST* SearchBST(const BST* tree, int key) {
+	if (tree == nullptr) return nullptr;
+	return tree->data == key ? tree : tree->data < key ? SearchBST(tree->left) : SearchBST(tree->right);
+}
